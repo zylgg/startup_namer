@@ -49,7 +49,7 @@ class _RandomWordsState extends State<RandomWords> {
   //该应用程序的大多数逻辑都位于此处—它维护 RandomWords widget 的状态
 
   String floatBarStr = "小控件";
-  String tabClickStr = "TabView设计";
+  String tabClickStr = "TabView";
 
   @override
   Widget build(BuildContext context2) {
