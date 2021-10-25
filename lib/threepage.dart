@@ -79,29 +79,31 @@ class threePageState extends State<threePageFul>
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
-          // appBar: AppBar(//上面放导航栏
-          //   backgroundColor: Colors.white,
-          //   automaticallyImplyLeading: false,
-          //   toolbarHeight: 44,
-          //   title: TabBar(
-          //     controller: tabController,
-          //     labelColor: Colors.blue,
-          //     unselectedLabelColor: Colors.black26,
-          //     tabs: tabs,
-          //   ),
-          // ),
-          floatingActionButton: FloatingActionButton(
-                child: new Image.asset(
-                  centerIcons,
-                  width: 40.0,
-                  height: 40.0,
-                ),
-              backgroundColor: Colors.white,
-              elevation: 4,
-              onPressed: _bottomCenterListener1),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: _myTabBarStack(),
-          body: buildTabBarView(context)),
+        // appBar: AppBar(//上面放导航栏
+        //   backgroundColor: Colors.white,
+        //   automaticallyImplyLeading: false,
+        //   toolbarHeight: 44,
+        //   title: TabBar(
+        //     controller: tabController,
+        //     labelColor: Colors.blue,
+        //     unselectedLabelColor: Colors.black26,
+        //     tabs: tabs,
+        //   ),
+        // ),
+        floatingActionButton: FloatingActionButton(
+            child: new Image.asset(
+              centerIcons,
+              width: 30.0,
+              height: 30.0,
+            ),
+            backgroundColor: Colors.white,
+            elevation: 4,
+            onPressed: _bottomCenterListener1),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+        body: buildTabBarView(context),
+        bottomNavigationBar: _myTabBarStack(),
+      ),
     );
   }
 

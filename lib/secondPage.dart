@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:startup_namer/beans/news/newinfo.dart';
 import 'package:startup_namer/beans/stores/Store.dart';
@@ -44,42 +45,43 @@ class mypagestate extends State {
   @override
   Widget build(BuildContext context2) {
     return Scaffold(
-      body: CustomScrollView(shrinkWrap: true, slivers: <Widget>[
-        new SliverPadding(
-          padding: EdgeInsets.all(2),
-          sliver: new SliverList(
-            delegate: new SliverChildListDelegate(
-              <Widget>[
-                Center(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Card(child: Padding(
-                    //     padding: EdgeInsets.only(top:50),
-                    //         child:Center(
-                    //           child: Column(
-                    //             children: <Widget>[
-                    Container(
-                        alignment: Alignment.center,
-                        child: TextButton(
-                            child: Text("我是回弹"),
-                            onPressed: () {
-                              Navigator.pop(context2, "~~啥也没传回来~~");
-                            })),
-                    getSmallWidget(),
-                  ],
-                ))
-              ],
+        body: CustomScrollView(shrinkWrap: true, slivers: <Widget>[
+          new SliverPadding(
+            padding: EdgeInsets.all(2),
+            sliver: new SliverList(
+              delegate: new SliverChildListDelegate(
+                <Widget>[
+                  Center(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Card(child: Padding(
+                      //     padding: EdgeInsets.only(top:50),
+                      //         child:Center(
+                      //           child: Column(
+                      //             children: <Widget>[
+                      Container(
+                          alignment: Alignment.center,
+                          child: TextButton(
+                              child: Text("我是回弹"),
+                              onPressed: () {
+                                Navigator.pop(context2, "~~啥也没传回来~~");
+                              })),
+                      getSmallWidget(),
+                    ],
+                  ))
+                ],
+              ),
             ),
-          ),
-        )
-      ]),
-      bottomNavigationBar:
-      Container(
-            child:
-              TextButton(onPressed: () {}, child: Text("提交",style: TextStyle(backgroundColor: Colors.white38),))
           )
-    );
+        ]),
+        bottomNavigationBar: Container(
+            child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  "提交",
+                  style: TextStyle(backgroundColor: Colors.white38),
+                ))));
   }
 
 //--------------------------------------------------布局，逻辑区--------------------------------------------
@@ -106,10 +108,12 @@ class mypagestate extends State {
             Text("单选框", style: TextStyle(color: Colors.blue)),
             _radioColumn(),
             Text("输入框", style: TextStyle(color: Colors.blue)),
-            _textField()
+            _textField(),
+
           ],
         ));
   }
+
 
   Row _photoLayout() {
     return Row(
