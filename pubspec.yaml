@@ -29,11 +29,19 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   english_words: ^4.0.0
+  #网络请求工具
   dio: ^4.0.0
   http: ^0.13.1
+  #json格式化工具
   json_annotation: ^3.1.0
+  #吐丝工具
   toast: ^0.1.5
+  #刷新工具
   flutter_easyrefresh: ^2.1.1
+  #时间格式化工具
+  intl: ^0.16.1
+  #网页工具
+  webview_flutter: ^1.0.4
 
 dev_dependencies:
   flutter_test:

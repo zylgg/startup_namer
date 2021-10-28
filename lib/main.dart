@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:startup_namer/secondPage.dart';
-import 'package:startup_namer/threepage.dart';
+import 'package:startup_namer/smallWidgetPage.dart';
+import 'package:startup_namer/tabViewPage.dart';
 import 'package:toast/toast.dart';
 //其中包含数千个最常用的英文单词以及一些实用功能。
 
@@ -79,7 +79,7 @@ class _RandomWordsState extends State<RandomWords> {
         ],
       )),
       floatingActionButton: FloatingActionButton(
-          //-----------------------------todo 去第二个页面
+          //--------------------------------------------todo 去第二个页面
           child: Text(floatBarStr),
           onPressed: () {
             _navigationSecondPage(context2);
@@ -90,7 +90,7 @@ class _RandomWordsState extends State<RandomWords> {
           child: Title(color: Colors.blue, child: Text(tabClickStr)),
           onPressed: () {
             Navigator.push(context2, MaterialPageRoute(builder: (context2) {
-              return threePageWidget(tabClickStr); //构造方法传参
+              return threePageWidget(tabClickStr);                      //构造方法传参
             }));
           },
         ),
@@ -108,14 +108,14 @@ class _RandomWordsState extends State<RandomWords> {
                   arguments: floatBarStr,
                 )))
         // .then((value) => {
-        // Toast.show(value.toString(), context)//第一种接受回传参数(不用async 和 await)
+        // Toast.show(value.toString(), context)                    //第一种接受回传参数(不用async 和 await)
         // })
         ;
     if(result==null){
       Toast.show("直接返回了", context);
       return;
     }
-    ScaffoldMessenger.of(context) //第二种接收回传参数
+    ScaffoldMessenger.of(context)                                  //第二种接收回传参数
       ..removeCurrentSnackBar()
       ..showSnackBar(SnackBar(
         shape: RoundedRectangleBorder(

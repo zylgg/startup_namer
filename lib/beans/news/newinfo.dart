@@ -6,6 +6,9 @@ import 'package:json_annotation/json_annotation.dart';
 class newinfo{
    String title;
    String date;
+   String author_name;
+   String url;
+   String thumbnail_pic_s;
 
    // "uniquekey": "db61b977d9fabd0429c6d0c671aeb30e",
    // "title": "“新时代女性的自我关爱”主题沙龙暨双山街道福泰社区妇儿活动家园启动仪式举行",
@@ -25,12 +28,18 @@ class newinfo{
    newinfo.fromJson(Map<String, dynamic> json) {
      title = json['title'];
      date = json['date'];
+     author_name=json['author_name'];
+     url=json['url'];
+     thumbnail_pic_s=json['thumbnail_pic_s'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['title'] = this.title;
     data['date'] = this.date;
+    data['url']=this.url;
+    data['thumbnail_pic_s']=this.thumbnail_pic_s;
+    data['author_name']=this.author_name;
     return data;
   }
 

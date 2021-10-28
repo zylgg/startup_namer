@@ -3,8 +3,11 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:intl/intl.dart';
 import 'package:startup_namer/beans/news/newinfo.dart';
 import 'package:startup_namer/beans/news/newsResult.dart';
+import 'package:startup_namer/beans/webviewPage.dart';
+import 'package:toast/toast.dart';
 import '../DioUtil.dart';
 
 class news_Page extends StatefulWidget {
@@ -91,24 +94,60 @@ class newsPageLayoutState extends State<news_Page>
         //   _postNews(storyPage);
         // }
         newinfo info = newLists[i];
-        return Container(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("位置：" + i.toString()),
-            Text(
-              info.title,
-              // maxLines: 3,
-              // overflow: TextOverflow.ellipsis,
-              style: new TextStyle(color: Colors.blue),
-            ),
-            Text(info.date, style: TextStyle(color: Colors.grey))
-          ],
-        ));
+        var date=DateFormat("MM-dd");
+        String curTime=date.format(DateTime.parse(info.date));
+
+        return  GestureDetector(
+          onTap: (){
+            // Toast.show(info.title, context,duration: 2);
+            Navigator.push(context, MaterialPageRoute(builder: (context2) {
+              return myWebViewPageless(info.title,info.url);                      //构造方法传参
+            }));
+          },
+          child: Container(
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      height: 90,
+                        margin: EdgeInsets.fromLTRB(0, 0, 110, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                info.title,
+                                // maxLines: 3,
+                                // overflow: TextOverflow.ellipsis,
+                                style: new TextStyle(color: Colors.blue,),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis
+                            ),
+                            Text("位置：" + i.toString()),
+                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                              Text(info.author_name, style: TextStyle(color: Colors.grey)),
+                              Text(curTime, style: TextStyle(color: Colors.grey))
+                            ],)
+                          ],
+                        )),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child:  Container(
+                        margin: EdgeInsets.fromLTRB(10, 10, 0, 0),
+                        child:Image.network(info.thumbnail_pic_s,width: 100)),
+                  )
+                ],
+              )
+          ),
+        );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(
         height: 3,
         thickness: 3,
+        color: Color(0xFFEEEEEE),
       ),
     );
   }
