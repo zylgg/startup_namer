@@ -10,20 +10,25 @@ import 'package:startup_namer/view/storePage.dart';
 import 'package:startup_namer/view/weatherPage.dart';
 import 'package:toast/toast.dart';
 
-class threePageWidget extends StatelessWidget {
-  String clickStr;
+void main() => runApp(threePageWidget(TITLE));
 
+String TITLE="TabBar首页";
+class threePageWidget extends StatelessWidget {
+  String clickStr="";
+  //
   threePageWidget(this.clickStr);
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("${clickStr}"),
-      ),
-      body: Center(
-        child: new threePageFul(),
+    return new MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("${clickStr}"),
+        ),
+        body: Center(
+          child: new threePageFul(),
+        ),
       ),
     );
   }
@@ -42,12 +47,16 @@ class threePageState extends State<threePageFul>
   TabController tabController = null;
 
   static const List<Tab> tabs = <Tab>[
-    Tab(text: '天气', icon: Icon(Icons.home)),
     Tab(
       text: '新闻',
-      icon: Text("  "),
-      iconMargin: EdgeInsets.only(bottom: 20),
+      icon: Icon(Icons.home),
     ),
+    Tab(text: '天气',
+      // icon: Text("   "),
+      icon: Icon(Icons.ac_unit_outlined),
+      // iconMargin: EdgeInsets.only(bottom: 20),
+    ),
+
     Tab(text: '段子', icon: Icon(Icons.favorite)),
   ];
 
@@ -199,10 +208,10 @@ class threePageState extends State<threePageFul>
         int index = tabs.indexOf(tab);
         switch (index) {
           case 0:
-            return weather_Page(index.toString());
-          case 1:
             npage = news_Page(index.toString());
             return npage;
+          case 1:
+            return weather_Page(index.toString());
           case 2:
             spage = store_Page(index.toString());
             return spage;
